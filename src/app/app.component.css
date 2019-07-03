@@ -7,5 +7,46 @@
     padding-left: 150px;
 }
 .matCustom{
+
+  height: 15vh;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+}
+
+.titleMatField{
+  left: 50px;
+}
+
+.linkMatField{
+  left: 100px;
+}
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .matCustom{
+
+  height: 50vh;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+}
+  .titleMatField {
+    position: absolute;
+    left: 30px;
+    top: 80px;
+  }
+
+  .linkMatField{
+    position: absolute;
+    left: 30px;
+    top: 160px;
+  }
+
 }
