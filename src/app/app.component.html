@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" class="matCustom">
+  <form>
+    <br>
+    <mat-toolbar-row>
+      <button mat-button (click)="addArticle(newtitle,newlink)" color="secondary">POST AN ARTICLE</button>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      <mat-form-field>
+        <input matInput placeholder="Title" #newtitle>
+      </mat-form-field>
+
+      &nbsp;&nbsp;&nbsp;
+
+      <mat-form-field>
+        <input matInput placeholder="Link" #newlink>
+      </mat-form-field>
+    </mat-toolbar-row>
+  </form>
+</mat-toolbar>
+<br><br><br>
+
+<app-article *ngFor="let foo of sortedArticles()" [article]="foo"></app-article>

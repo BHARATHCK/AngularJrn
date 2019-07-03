@@ -1,0 +1,26 @@
+
+<div class="test">
+<mat-card class="custom">
+    <mat-card-title>{{ article.title }}</mat-card-title>
+    <mat-card-subtitle>placeholder</mat-card-subtitle>
+
+    <h4>Votes: {{ article.votes }}</h4>
+
+    <div class="meta">({{ article.domain() }})</div>
+
+    <mat-card-content>
+      <div class="alert alert-info">
+        <h5>THIS IS SOME RANDOM DESCRIPTION OF THE PRODUCT</h5>
+      </div> 
+    </mat-card-content>
+
+ <mat-card-actions>
+   <div class="linkCustom">
+      <button mat-button>Read article</button>
+      <button mat-button (click)="voteUp()">upvote++</button>
+      <button mat-button (click)="voteDown()">downvote--</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+<br>
+</div>
