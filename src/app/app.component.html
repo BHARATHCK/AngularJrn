@@ -2,7 +2,7 @@
   <form>
     <br>
     <mat-toolbar-row>
-      <button mat-button (click)="addArticle(newtitle,newlink)" color="secondary">POST AN ARTICLE</button>
+      <button mat-button (click)="dummyArticle(newtitle,newlink)" color="secondary" data-toggle="modal" data-target="#myModal">POST AN ARTICLE</button>
 
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -21,3 +21,29 @@
 <br><br><br>
 
 <app-article *ngFor="let foo of sortedArticles()" [article]="foo"></app-article>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Description for the product</h4>
+        </div>
+        <div class="modal-body">
+          <div>
+            <mat-form-field class="customMatTestArea">
+              <textarea matInput placeholder="Describe the product" #newdescription></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="addDesc(newtitle,newlink,newdescription)" class="btn btn-default" data-dismiss="modal">Submit</button>
+          <button type="button" (click)="closeModal(newtitle,newlink,newdescription)" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
