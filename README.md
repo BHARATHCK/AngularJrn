@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 # AngularReddit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -29,4 +21,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # AngularJrn
 Learning Angular (Following ng-book for angular 6)
->>>>>>> 56fc718a57d664d058ac9d93f3921479ffe2f0a6
