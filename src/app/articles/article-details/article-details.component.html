@@ -1,0 +1,44 @@
+<!--
+<div class="flex-container">
+    <div class="matCardFleet">
+    <mat-card class="custom">
+        <mat-card-title>{{ article.title }}</mat-card-title>
+        <mat-card-title>{{ article.desc }}</mat-card-title>
+        <mat-card-subtitle>placeholder</mat-card-subtitle>
+    
+        <h4>Votes: {{ article.votes }}</h4>
+    
+        <div class="meta">{{ article.domain() }}</div>
+    
+        <mat-card-content>
+          <div class="alert alert-info">
+            <h5>{{ article.desc }}</h5>
+          </div> 
+        </mat-card-content>
+    
+     <mat-card-actions>
+       <div class="linkCustom">
+          <button mat-button>Read article</button>
+          <button mat-button (click)="voteUp()">upvote++</button>
+          <button mat-button (click)="voteDown()">downvote--</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+    <br>
+    </div>
+    </div>
+-->
+
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{ article.title }}</h4>
+      <h4>Votes: {{ article.votes }}</h4>
+      <div class="alert alert-info">
+          <h5>{{ article.desc }}</h5>
+        </div> 
+      <a href="#" class="card-link">READ ARTICLE</a>
+      <button type="button" (click)="upVoteArticle()" class="btn btn-outline-light text-dark">UPVOTE++</button>
+      <button type="button" (click)="downVoteArticle()" class="btn btn-outline-light text-dark">DOWNVOTE--</button>
+    </div>
+  </div>
+    <br>
