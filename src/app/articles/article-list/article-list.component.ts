@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { ArticleService } from '../article.service';
-import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-article-list',
@@ -11,7 +10,6 @@ import { FirebaseService } from '../firebase.service';
 export class ArticleListComponent implements OnInit {
 
   articles: any;
-  public firebaseService: FirebaseService;
 
   constructor(private articleService: ArticleService) { }
 

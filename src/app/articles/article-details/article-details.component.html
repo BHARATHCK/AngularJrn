@@ -29,6 +29,7 @@
     </div>
 -->
 
+<!--
 <div class="card">
     <div class="card-body">
       <h4 class="card-title">{{ article.title }}</h4>
@@ -42,3 +43,22 @@
     </div>
   </div>
     <br>
+-->
+<div class="zorroWrap">
+    <nz-card style="width:410px;" nzTitle="{{ article.title }}" [nzExtra]="extraTemplate" [nzActions]="[actionEllipsis , voteDisplay]">
+      <p>{{ article.desc }}</p>
+    </nz-card>
+    <ng-template #extraTemplate>
+      <a href="#">More</a>
+    </ng-template>
+    
+    <ng-template #actionEllipsis>
+      <i nz-icon nzType="ellipsis"></i>
+    </ng-template>
+
+    <ng-template #voteDisplay>
+      <i nz-icon [nzType]="'heart'" (click)="upVoteArticle()" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb2f96'"></i>
+      <i nz-icon nzType="ellipsis">{{ article.votes }}</i>
+    </ng-template>
+    <br>
+<div>
