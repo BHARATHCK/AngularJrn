@@ -26,6 +26,7 @@ import { NZ_ICONS } from 'ng-zorro-antd';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { DeleteAllArticlesComponent } from './articles/delete-all-articles/delete-all-articles.component';
 
 registerLocaleData(en);
 
@@ -40,9 +41,11 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     AppComponent,
     CreateArticleComponent,
     ArticleDetailsComponent,
-    ArticleListComponent
+    ArticleListComponent,
+    DeleteAllArticlesComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -57,7 +60,6 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     FormsModule,
     ReactiveFormsModule,
     NgZorroAntdModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     NzCardModule,
     NzFormModule

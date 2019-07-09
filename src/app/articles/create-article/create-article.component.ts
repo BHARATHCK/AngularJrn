@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NzModalService } from 'ng-zorro-antd';
 
 import { Article } from '../article';
 import { ArticleService } from '../article.service';
+import { ArticleListComponent } from '../article-list/article-list.component'
 
 import {Router} from "@angular/router"
 
@@ -18,8 +20,18 @@ export class CreateArticleComponent implements OnInit {
   article: Article = new Article();
   submitted = false;
 
-  constructor(private articleService: ArticleService, private fb: FormBuilder , private routerLink: Router) { }
+  constructor(private articleService: ArticleService, private fb: FormBuilder , private routerLink: Router , private modalService: NzModalService , public articleListComponent: ArticleListComponent) {
+   }
 
+
+
+  info(): void {
+    this.modalService.info({
+      nzTitle: 'AGREEMENT AND USAGE POLICY DETAILS',
+      nzContent: '<p>RANDOM AGREEMENT will update later</p>',
+      nzOnOk: () => console.log('Info OK')
+    });
+  }
 
   confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
     if (!control.value) {
@@ -65,11 +77,13 @@ export class CreateArticleComponent implements OnInit {
   submitForm(): void {
     console.log('onSubmit() triggered {{article.title}} , {{article.link}} , {{article.desc}}');
     this.save();
+    //this.articleService.deleteAll();
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    this.routerLink.navigate(['articles']);
+    this.articleListComponent.notifyValueBoolean = true;
+    this.routerLink.navigate(['articles/'], {queryParams: {'foo': '1'}, skipLocationChange: true});
 
   }
 
