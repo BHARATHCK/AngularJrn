@@ -1,35 +1,4 @@
 <!--
-<div class="jumbotron">
-    <p class="lead">What's on your mind ?</p>
-    <hr class="my-4">
-
-      <div class="form-group">
-        <input type="text" id="title" class="form-control" required #newtitle>
-        <label class="form-control-placeholder" for="name">Title</label>
-      </div>
-
-<br>
-      
-      <label for="basic-url">URL</label>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">https://</span>
-        </div>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" #newlink>
-      </div>
-<br>
-
-<div class="form-group">
-    <input type="text" id="desc" class="form-control" required #newdescription>
-    <label class="form-control-placeholder" for="name">Description</label>
-  </div>
-
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" (click)="newArticle()" (click)="newArticle()" (click)="" role="button">POST</a>
-    </p>
-  </div>
--->
-
 <div class="container-fluid">
 <h3>Create Post</h3>
 <div [hidden]="submitted" style="width: 300px;">
@@ -58,6 +27,75 @@
   <button class="btn btn-success" (click)="newArticle()">Create Post</button>
 </div>
 </div>
+-->
+<!--#####################################-->
 
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="title" nzRequired>
+      <span>
+        TITLE
+        <i
+          nz-icon
+          nz-tooltip
+          nzTitle="DESCRIBE YOUR THOUGHT IN A LINE BRIEFLY!"
+          type="question-circle"
+          nzTheme="outline"
+        ></i>
+      </span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your Title!">
+      <input nz-input id="title" [(ngModel)]="article.title" formControlName="title" />
+    </nz-form-control>
+  </nz-form-item>
 
-<!--jhsfsfbskefbskejbfs-->
+  
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="link" nzRequired>URL</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input URL!">
+      <input nz-input id="link" [(ngModel)]="article.link" formControlName="link" placeholder="link" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="desc" nzRequired>DESCRIPTION</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please add description!">
+      <input nz-input id="desc" [(ngModel)]="article.desc" formControlName="desc" placeholder="DESCRIPTION" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="captcha" nzRequired>Captcha</nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input the captcha you got!"
+      nzExtra="We must make sure that your are a human."
+    >
+      <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="12">
+          <input nz-input formControlName="captcha" id="captcha" />
+        </div>
+        <div nz-col [nzSpan]="12">
+          <button nz-button (click)="getCaptcha($event)">Get captcha</button>
+        </div>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+
+  
+
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <label nz-checkbox formControlName="agree">
+        <span>I have read the <a>agreement</a></span>
+      </label>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">POST</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

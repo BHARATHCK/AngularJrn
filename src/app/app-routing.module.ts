@@ -8,7 +8,8 @@ import { ArticleListComponent } from './articles/article-list/article-list.compo
 const routes: Routes = [
   { path: '', redirectTo: 'articles', pathMatch: 'full' },
   { path: 'articles', component: ArticleListComponent },
-  { path: 'post', component: CreateArticleComponent }
+  { path: 'post', component: CreateArticleComponent },
+  { path: 'articles/:foo', component:ArticleListComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

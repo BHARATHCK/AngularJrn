@@ -58,7 +58,6 @@
 
     <ng-template #voteDisplay>
       <i nz-icon [nzType]="'heart'" (click)="upVoteArticle()" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb2f96'"></i>
-      <i nz-icon nzType="ellipsis">{{ article.votes }}</i>
+      <i nz-icon nzType="ellipsis">&nbsp;&nbsp; {{ article.votes }}</i>
     </ng-template>
-    <br>
 <div>
