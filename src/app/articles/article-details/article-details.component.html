@@ -45,11 +45,13 @@
     <br>
 -->
 <div class="zorroWrap">
-    <nz-card style="width:410px;" nzTitle="{{ article.title }}" [nzExtra]="extraTemplate" [nzActions]="[actionEllipsis , voteDisplay]">
-      <p>{{ article.desc }}</p>
+    <nz-card nzHoverable style="width:410px;" nzTitle="{{ article.title }}" [nzExtra]="extraTemplate" [nzActions]="[actionEllipsis , voteDisplay , articleDelete]">
+      <div class="angular-with-newlines">
+      <p align="justify">{{ article.desc }}</p>
+      </div>
     </nz-card>
     <ng-template #extraTemplate>
-      <a href="#">More</a>
+      <a href="{{ article.link }}">More</a>
     </ng-template>
     
     <ng-template #actionEllipsis>
@@ -60,4 +62,11 @@
       <i nz-icon [nzType]="'heart'" (click)="upVoteArticle()" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb2f96'"></i>
       <i nz-icon nzType="ellipsis">&nbsp;&nbsp; {{ article.votes }}</i>
     </ng-template>
+
+    <ng-template #articleDelete>
+     <!-- <a nz-popconfirm nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()" nz-icon nzType="stop" nzTheme="twotone" (click)="deleteArticle()"></a> -->
+      <a nz-popconfirm nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()">Delete</a>
+    </ng-template>
+
+    
 <div>

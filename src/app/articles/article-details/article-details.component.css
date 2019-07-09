@@ -13,10 +13,17 @@
     padding: 5px;
 }
 
+.angular-with-newlines {
+  white-space: pre;
+}
+
 @media only screen and (max-width: 360px) {
     
     .card{
         width: 18rem;
 	    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
     }
+    .angular-with-newlines {
+  white-space: pre;
+}
   }

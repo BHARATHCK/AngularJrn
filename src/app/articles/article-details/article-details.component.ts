@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { Article } from '../article';
+import { NzMessageService } from 'ng-zorro-antd';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class ArticleDetailsComponent implements OnInit {
 
   @Input() article: Article;
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService , private nzMessageService: NzMessageService) { }
 
   ngOnInit() {
   }
@@ -46,6 +47,11 @@ export class ArticleDetailsComponent implements OnInit {
     this.articleService
       .updateArticle(this.article.key, { votes:  fooVotes})
       .catch(err => console.log(err));
+  }
+
+  confirm(){
+    this.deleteArticle();
+    this.nzMessageService.info('the article has been deleted');
   }
 
 }
