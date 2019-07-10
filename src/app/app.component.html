@@ -1,3 +1,4 @@
+<!--
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
     <ul class="navbar-nav">
       <li class="nav-item active">
@@ -11,4 +12,61 @@
         </li>
     </ul>
   </nav>
-  <router-outlet></router-outlet>
+-->
+<!--
+  <mat-toolbar color="primary">
+
+  <mat-toolbar-row>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example chrome reader mode" routerLink="articles" routerLinkActive="active">FEED</mat-icon>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example assignment ind" routerLink="post" routerLinkActive="active">CREATE POST</mat-icon>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span>DELETE ALL POSTS</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon" routerLink="delete" routerLinkActive="active">delete</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+-->
+
+<div> 
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <a mat-button class="companyName" routerLink="/">
+      <span>FEED YOU</span>
+    </a>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="articles">FEED</a>
+      <a mat-button routerLink="post">CREATE POST</a>
+      <a mat-button routerLink="delete">DELETE ALL POSTS</a>
+    </div>
+
+  </mat-toolbar>
+
+<div style="height: calc(100vh - 64px);">
+  <mat-sidenav-container fxFlexFill class="example-container">
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
+        <a mat-button routerLink="articles">FEED</a>
+        <a mat-button routerLink="post">POSTS</a>
+        <a mat-button routerLink="delete">DELETE ALL POSTS</a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+</div>
