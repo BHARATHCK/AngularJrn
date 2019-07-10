@@ -13,7 +13,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatInputModule} from '@angular/material/input';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
@@ -27,6 +29,10 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { DeleteAllArticlesComponent } from './articles/delete-all-articles/delete-all-articles.component';
+
+import {
+  MatSidenavModule
+} from '@angular/material';
 
 registerLocaleData(en);
 
@@ -54,6 +60,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     MatNativeDateModule,
     MatButtonModule,
     MatToolbarModule,
+    MatIconModule,
     MatFormFieldModule,
     MatInputModule,
     NgbModule,
@@ -62,7 +69,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     NgZorroAntdModule,
     BrowserAnimationsModule,
     NzCardModule,
-    NzFormModule
+    NzFormModule,
+    FlexLayoutModule,
+    MatSidenavModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
