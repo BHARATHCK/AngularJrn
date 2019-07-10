@@ -52,7 +52,7 @@ export class CreateArticleComponent implements OnInit {
       link: [null, [Validators.required]],
       desc: [null, [Validators.required]],
       captcha: [null, [Validators.required]],
-      agree: [false]
+      agree: [false,[Validators.required]]
     });
   }
 
@@ -76,12 +76,13 @@ export class CreateArticleComponent implements OnInit {
 
   submitForm(): void {
     console.log('onSubmit() triggered {{article.title}} , {{article.link}} , {{article.desc}}');
-    this.save();
+    
     //this.articleService.deleteAll();
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
+    this.save();
     this.articleListComponent.notifyValueBoolean = true;
     this.routerLink.navigate(['articles/'], {queryParams: {'foo': '1'}, skipLocationChange: true});
 

@@ -29,6 +29,8 @@
 </div>
 -->
 <!--#####################################-->
+<html>
+  <body>
 <br><br><br>
 <div class="input_form">
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
@@ -87,7 +89,10 @@
   
 
   <nz-form-item nz-row class="register-area">
-    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6" [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="We need the article poster to agree to Terms & conditions"
+     >
       <label nz-checkbox formControlName="agree">
         <span>I have read the <button nz-button (click)="info()">agreement</button></span>
       </label>
@@ -101,3 +106,5 @@
   </nz-form-item>
 </form>
 </div>
+  </body>
+</html>
