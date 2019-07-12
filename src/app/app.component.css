@@ -4,6 +4,7 @@
 
 .mat-toolbar{
   height: 7vh;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
 }
 
 div {
@@ -37,3 +38,8 @@ button{
       font-size: 200%;
       text-align: center;
   }
+
+  .mat-elevation-z5 {
+   position: relative;
+   z-index: 2;
+}

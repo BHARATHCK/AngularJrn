@@ -35,7 +35,7 @@
 -->
 
 <div> 
-  <mat-toolbar color="primary">
+  <mat-toolbar color="primary" class="mat-elevation-z5">
     <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
@@ -47,9 +47,9 @@
     </a>
     <span class="example-spacer"></span>
     <div fxShow="true" fxHide.lt-md="true">
-      <a mat-button routerLink="articles">FEED</a>
-      <a mat-button routerLink="post">CREATE POST</a>
-      <a mat-button routerLink="delete">DELETE ALL POSTS</a>
+      <a mat-button routerLink="articles"><mat-icon>chrome_reader_mode</mat-icon> FEED</a>
+      <a mat-button routerLink="post"><mat-icon>note_add</mat-icon> CREATE POST</a>
+      <a mat-button routerLink="delete"><mat-icon>delete_sweep</mat-icon> DELETE ALL POSTS</a>
     </div>
 
   </mat-toolbar>
@@ -59,9 +59,9 @@
 
     <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
       <div fxLayout="column">
-        <a mat-button routerLink="articles">FEED</a>
-        <a mat-button routerLink="post">POSTS</a>
-        <a mat-button routerLink="delete">DELETE ALL POSTS</a>
+        <a mat-button routerLink="articles"><mat-icon>chrome_reader_mode</mat-icon> FEED</a>
+        <a mat-button routerLink="post"><mat-icon>note_add</mat-icon> CREATE POSTS</a>
+        <a mat-button routerLink="delete"><mat-icon>delete_sweep</mat-icon> DELETE ALL POSTS</a>
       </div>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>

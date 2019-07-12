@@ -45,7 +45,7 @@
     <br>
 -->
 <div class="zorroWrap">
-    <nz-card nzHoverable style="width:410px;" nzTitle="{{ article.title }}" [nzExtra]="extraTemplate" [nzActions]="[actionEllipsis , voteDisplay , articleDelete]">
+    <nz-card class="nzCard" nzHoverable nzTitle="{{ article.title }}" [nzExtra]="extraTemplate" [nzActions]="[actionEllipsis , voteDisplay , articleDelete]">
       <div class="angular-with-newlines">
       <p align="justify">{{ article.desc }}</p>
       </div>
@@ -66,7 +66,5 @@
     <ng-template #articleDelete>
      <!-- <a nz-popconfirm nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()" nz-icon nzType="stop" nzTheme="twotone" (click)="deleteArticle()"></a> -->
       <a nz-popconfirm nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()">Delete</a>
-    </ng-template>
-
-    
-<div>
+    </ng-template>    
+</div>
