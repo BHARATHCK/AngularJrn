@@ -33,6 +33,7 @@ import { DeleteAllArticlesComponent } from './articles/delete-all-articles/delet
 import {
   MatSidenavModule
 } from '@angular/material';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(en);
 
@@ -71,7 +72,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     NzCardModule,
     NzFormModule,
     FlexLayoutModule,
-    MatSidenavModule
+    MatSidenavModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
