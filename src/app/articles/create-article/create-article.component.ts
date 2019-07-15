@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzModalService } from 'ng-zorro-antd';
-
+import { NzFormModule } from 'ng-zorro-antd/form';
 import { Article } from '../article';
 import { ArticleService } from '../article.service';
 import { ArticleListComponent } from '../article-list/article-list.component'

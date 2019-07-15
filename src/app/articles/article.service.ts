@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList, AngularFireAction} from '@angular/fire/database';
+import { AngularFireDatabase , AngularFireList, AngularFireAction } from '@angular/fire/database';
 import { Observable, BehaviorSubject} from 'rxjs';
 import { Article } from './article';
 
@@ -11,18 +11,20 @@ export class ArticleService {
   private dbPath = '/articles';
 
   articleRef: AngularFireList<Article> = null;
-
+  dbRef = this.db.database.ref(this.dbPath);
 
   fooArray: any;
   items: Observable<AngularFireAction<firebase.database.DataSnapshot>[]>;
   group: BehaviorSubject<any>;
+
 
   constructor(public db: AngularFireDatabase) {
     this.articleRef = db.list(this.dbPath);
   }
 
   createArticle(article: Article): void {
-    this.articleRef.push(article);
+    this.dbRef.child('metrics').set(article);
+    //this.articleRef.push(article);
   }
 
   updateArticle(key: string, value: any): Promise<void> {
@@ -34,6 +36,7 @@ export class ArticleService {
   }
 
   getArticlesList(): AngularFireList<Article> {
+    //return this.db.database().ref('articles').orderByChild('metrics/votes');
     return this.articleRef;
   }
 
