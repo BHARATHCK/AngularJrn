@@ -28,12 +28,14 @@ import { NZ_ICONS } from 'ng-zorro-antd';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { MarkdownModule } from 'ngx-markdown';
 import { DeleteAllArticlesComponent } from './articles/delete-all-articles/delete-all-articles.component';
 
 import {
   MatSidenavModule
 } from '@angular/material';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ArticleDisplayComponent } from './articles/article-display/article-display.component';
 
 registerLocaleData(en);
 
@@ -49,7 +51,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     CreateArticleComponent,
     ArticleDetailsComponent,
     ArticleListComponent,
-    DeleteAllArticlesComponent
+    DeleteAllArticlesComponent,
+    ArticleDisplayComponent
   ],
   imports: [
     HttpClientModule,
@@ -73,6 +76,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     NzFormModule,
     FlexLayoutModule,
     MatSidenavModule,
+    MarkdownModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

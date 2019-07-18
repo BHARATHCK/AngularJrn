@@ -48,9 +48,18 @@
       </span>
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your Title!">
-      <input nz-input id="title" [(ngModel)]="article.title" formControlName="title" />
+      <input nz-input id="title" [(ngModel)]="article.title" formControlName="title"/>
     </nz-form-control>
   </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="date_store" nzRequired>URL</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input URL!">
+      <input nz-input id="date_store" [(ngModel)]="article.date_store" formControlName="date_store" value="{{myDate | date:'dd-MM-yyyy'}}"/>
+    </nz-form-control>
+  </nz-form-item>
+
+<!--style="display: none;"-->
 
   
   <nz-form-item>
@@ -64,6 +73,15 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="desc" nzRequired>DESCRIPTION</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please add description!">
       <textarea nz-input id="desc" [(ngModel)]="article.desc" formControlName="desc" placeholder="Description of the article"  nzAutosize></textarea>
+      <span>THIS DESCRIPTION SUPPORTS MARKDOWN FOR RENDERING RICH TEXT OUTPUT, Here is the <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">cheatsheet</a> to get you started</span>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="article_content" nzRequired>ARTICLE CONTENT</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Write the content of article">
+      <textarea nz-input id="article_content" [(ngModel)]="article.article_content" formControlName="article_content" placeholder="Content of the article"  nzAutosize></textarea>
+      <span>THIS TEXT AREA SUPPORTS MARKDOWN FOR RENDERING RICH TEXT OUTPUT, Here is the markdown <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">cheatsheet</a> to get you started</span>
     </nz-form-control>
   </nz-form-item>
 

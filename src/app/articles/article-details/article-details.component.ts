@@ -3,12 +3,15 @@ import { ArticleService } from '../article.service';
 import { Article } from '../article';
 import { NzMessageService } from 'ng-zorro-antd';
 import {MatRippleModule} from '@angular/material/core';
+import { DatePipe } from '@angular/common';
+import {Router} from "@angular/router"
 
 
 @Component({
   selector: 'app-article-details',
   templateUrl: './article-details.component.html',
-  styleUrls: ['./article-details.component.css']
+  styleUrls: ['./article-details.component.css'],
+  providers: [DatePipe]
 })
 export class ArticleDetailsComponent implements OnInit {
 
@@ -16,8 +19,9 @@ export class ArticleDetailsComponent implements OnInit {
   @Input() article: Article;
   visible = false;
   placement = 'bottom';
+  myDate = new Date();
 
-  constructor(private articleService: ArticleService , private nzMessageService: NzMessageService) { }
+  constructor(private articleService: ArticleService , private nzMessageService: NzMessageService , private datePipe: DatePipe , private routerLink: Router) { }
 
   ngOnInit() {
   }
@@ -67,6 +71,11 @@ export class ArticleDetailsComponent implements OnInit {
 
   close(): void {
     this.visible = false;
+  }
+  
+  navtodisplay(){
+    console.log('NAVTODISPLAY TRIGGERED : ',this.article.key);
+    this.routerLink.navigate(['articles/'], {queryParams: {'nav': this.article.key}, skipLocationChange: true});
   }
 
 }

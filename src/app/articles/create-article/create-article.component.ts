@@ -7,18 +7,22 @@ import { Article } from '../article';
 import { ArticleService } from '../article.service';
 import { ArticleListComponent } from '../article-list/article-list.component'
 
+import { DatePipe } from '@angular/common';
+
 import {Router} from "@angular/router"
 
 @Component({
   selector: 'app-create-article',
   templateUrl: './create-article.component.html',
-  styleUrls: ['./create-article.component.css']
+  styleUrls: ['./create-article.component.css'],
+  providers: [DatePipe]
 })
 export class CreateArticleComponent implements OnInit {
 
   validateForm: FormGroup;
   article: Article = new Article();
   submitted = false;
+  myDate = new Date();
 
   constructor(private articleService: ArticleService, private fb: FormBuilder , private routerLink: Router , private modalService: NzModalService , public articleListComponent: ArticleListComponent) {
    }
@@ -52,7 +56,9 @@ export class CreateArticleComponent implements OnInit {
       link: [null, [Validators.required]],
       desc: [null, [Validators.required]],
       captcha: [null, [Validators.required]],
-      agree: [false,[Validators.required]]
+      agree: [false,[Validators.required]],
+      date_store: [this.myDate],
+      article_content: [null, [Validators.required]]
     });
   }
 
@@ -64,6 +70,7 @@ export class CreateArticleComponent implements OnInit {
 
   save() {
     console.log('save() triggered');
+    console.log('DATE IS : ',this.myDate);
     this.articleService.createArticle(this.article);
     this.article = new Article();
   }

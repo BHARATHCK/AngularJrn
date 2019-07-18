@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase , AngularFireList, AngularFireAction } from '@angular/fire/database';
 import { Observable, BehaviorSubject} from 'rxjs';
 import { Article } from './article';
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class ArticleService {
   fooArray: any;
   items: Observable<AngularFireAction<firebase.database.DataSnapshot>[]>;
   group: BehaviorSubject<any>;
+  article: Observable<any>;
 
 
   constructor(public db: AngularFireDatabase) {
@@ -44,4 +46,11 @@ export class ArticleService {
     return this.articleRef.remove();
   }
   //this.articleRef.query.orderByValue().on((a: Article, b: Article) => b.votes - a.votes);
+
+  getArticle(key: string){
+    this.article = this.db.object('articles/{{ key }}')
+        .snapshotChanges().map(res => {
+            return res.payload.val();
+        });
+  }
 }
