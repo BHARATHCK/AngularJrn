@@ -23,8 +23,8 @@ export class ArticleService {
   }
 
   createArticle(article: Article): void {
-    this.dbRef.child('metrics').set(article);
-    //this.articleRef.push(article);
+    //this.dbRef.child('metrics').set(article);
+    this.articleRef.push(article);
   }
 
   updateArticle(key: string, value: any): Promise<void> {

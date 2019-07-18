@@ -55,7 +55,8 @@
     </ng-template>
     
     <ng-template #actionEllipsis>
-      <i nz-icon nzType="ellipsis"></i>
+      <i nz-icon (click)="open()" nzType="ellipsis"></i>
+
     </ng-template>
 
     <ng-template #voteDisplay>
@@ -64,7 +65,20 @@
     </ng-template>
 
     <ng-template #articleDelete>
-     <!-- <a nz-popconfirm nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()" nz-icon nzType="stop" nzTheme="twotone" (click)="deleteArticle()"></a> -->
-      <a nz-popconfirm nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()">Delete</a>
+      <a nz-popconfirm nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()"><i nz-icon [nzType]="'delete'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb2f96'"></i></a>
     </ng-template>    
 </div>
+
+<!-- NZ DRAWER -->
+    <nz-drawer
+      [nzClosable]="false"
+      [nzVisible]="visible"
+      [nzPlacement]="placement"
+      nzTitle="{{ article.title }}"
+      (nzOnClose)="close()">
+      
+      <button mat-button><mat-icon>share</mat-icon>SHARE ARTICLE</button><br>
+      <button mat-button><mat-icon>library_add</mat-icon>ADD TO FAVORITES</button><br>
+      <button mat-button><mat-icon>visibility_off</mat-icon>HIDE ARTICLE</button><br>
+ 
+    </nz-drawer>

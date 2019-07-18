@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { Article } from '../article';
 import { NzMessageService } from 'ng-zorro-antd';
+import {MatRippleModule} from '@angular/material/core';
 
 
 @Component({
@@ -13,6 +14,8 @@ export class ArticleDetailsComponent implements OnInit {
 
 
   @Input() article: Article;
+  visible = false;
+  placement = 'bottom';
 
   constructor(private articleService: ArticleService , private nzMessageService: NzMessageService) { }
 
@@ -52,6 +55,18 @@ export class ArticleDetailsComponent implements OnInit {
   confirm(){
     this.deleteArticle();
     this.nzMessageService.info('the article has been deleted');
+  }
+
+  cancel(){
+    this.nzMessageService.info('Ohhfff! That was close, Looks like you changed your mind');
+  }
+
+  open(): void {
+    this.visible = true;
+  }
+
+  close(): void {
+    this.visible = false;
   }
 
 }

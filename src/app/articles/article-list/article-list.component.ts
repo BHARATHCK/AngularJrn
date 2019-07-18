@@ -4,6 +4,10 @@ import { ArticleService } from '../article.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NzNotificationService } from 'ng-zorro-antd';
+import { Observable, of } from 'rxjs';
+import { delay, share } from 'rxjs/operators';
+import { Article } from './../article';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +29,7 @@ export class ArticleListComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.getArticleList();
 
 
@@ -50,9 +55,13 @@ this.sub=this._Activatedroute.paramMap.subscribe(params => {
          console.log(params);
           this.id = params.get('id'); 
 
+
+
+          //ksdljfksdlj
+
   */
 
-  getArticleList() {
+   getArticleList() {
     this.articleService.getArticlesList().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
