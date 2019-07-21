@@ -1,49 +1,14 @@
-<!--
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="articles" routerLinkActive="active">FEED</a>
-      </li>
-      <li class="nav-item active">
-          <a class="nav-link" routerLink="post" routerLinkActive="active">CREATE POST</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="delete" routerLinkActive="active">DELETE ALL POSTS</a>
-        </li>
-    </ul>
-  </nav>
--->
-<!--
-  <mat-toolbar color="primary">
-
-  <mat-toolbar-row>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example chrome reader mode" routerLink="articles" routerLinkActive="active">FEED</mat-icon>
-  </mat-toolbar-row>
-
-  <mat-toolbar-row>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example assignment ind" routerLink="post" routerLinkActive="active">CREATE POST</mat-icon>
-  </mat-toolbar-row>
-
-  <mat-toolbar-row>
-    <span>DELETE ALL POSTS</span>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon" routerLink="delete" routerLinkActive="active">delete</mat-icon>
-  </mat-toolbar-row>
-</mat-toolbar>
--->
-
 <div>
   <mat-toolbar color="primary" class="mat-elevation-z5">
     <div fxShow="true" fxHide.gt-sm="true">
-      <button mat-icon-button (click)="sidenav.toggle()">
+      <button #menuButton mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
 
     <a mat-button class="companyName" routerLink="/">
-      <span>FEED YOU</span>
+      <span *ngIf="!(authenticationService.userData | async)">FEED YOU</span>
+      <span *ngIf="authenticationService.userData | async">{{ (authenticationService.userData | async)?.email.substring(0,5) }}</span>
     </a>
     <span class="example-spacer"></span>
     <div fxShow="true" fxHide.lt-md="true">
@@ -66,9 +31,9 @@
   <div style="height: calc(100vh - 64px);">
     <mat-sidenav-container fxFlexFill class="example-container">
 
-      <mat-sidenav color="primary" #sidenav (click)="sidenav.toggle()" fxLayout="column" mode="over" opened="false"
-        fxHide.gt-sm="true">
+      <mat-sidenav color="primary" #sidenav (click)="sidenav.toggle()" (close)="menuButton._removeKeyboardFocus()" fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
         <div fxLayout="column">
+          <a md-button style="height: 0; position: absolute;"></a>
           <a mat-button routerLink="articles">
             <mat-icon>chrome_reader_mode</mat-icon> FEED
           </a>
@@ -84,7 +49,7 @@
         </div>
       </mat-sidenav>
       <mat-sidenav-content fxFlexFill>
-        <p *ngIf="authenticationService.userData | async">Hello {{ (authenticationService.userData | async)?.email }}
+        <p *ngIf="authenticationService.userData | async">
           <router-outlet></router-outlet>
         </p>
 
@@ -114,21 +79,12 @@
                     <button nz-button class="login-form-button" (click)="signIn()" [nzType]="'primary'">Log in</button>
                     Or
                     <button nz-button class="login-form-button" (click)="signUp()" [nzType]="'primary'">Sign Up</button>
+                    Or
+                    <button nz-button class="login-form-button" (click)="doGoogleLogin()" [nzType]="'primary'">Sign Up/Sign In via Google</button>
                   </nz-form-control>
                 </nz-form-item>
               </form>
         </div>
-
-<!-- 
-          <input type="text" [(ngModel)]="email" placeholder="email">
-          <input type="password" [(ngModel)]="password" placeholder="password">
-
-          <button (click)="signUp()">Sign Up</button>
-
-          <button (click)="signIn()">Login</button>
-        </div>
-
-        <button (click)="signOut()" *ngIf="authenticationService.userData | async">Logout</button> -->
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>

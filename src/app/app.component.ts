@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import { Component , ViewChild, AfterViewInit,ElementRef} from '@angular/core';
 import { AuthenticationService } from '../app/articles/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatButton} from '@angular/material/button';
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
+
   title = 'redditClone';
 
   email: string;
@@ -24,6 +28,8 @@ export class AppComponent {
 
   constructor(public authenticationService: AuthenticationService, private fb: FormBuilder) { }
 
+  
+
   signUp() {
     this.authenticationService.SignUp(this.email, this.password);
     this.email = '';
@@ -38,6 +44,10 @@ export class AppComponent {
 
   signOut() {
     this.authenticationService.SignOut();
+  }
+
+  doGoogleLogin(){
+    this.authenticationService.doGoogleLogin();
   }
 
   ngOnInit(): void {
