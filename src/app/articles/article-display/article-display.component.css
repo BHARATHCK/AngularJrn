@@ -1,0 +1,12 @@
+.formatData{
+    text-align: left;
+    padding: 50px;
+    overflow-y: hidden !important;
+}
+
+.wrapContent{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    overflow-y: hidden !important;
+}

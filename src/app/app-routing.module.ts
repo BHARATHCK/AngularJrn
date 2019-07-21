@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: 'articles', component: ArticleListComponent },
   { path: 'post', component: CreateArticleComponent },
   { path: 'delete', component: DeleteAllArticlesComponent},
-  
+  { path: 'display', component: ArticleDisplayComponent },
   { path: 'articles/:foo', component: ArticleListComponent, pathMatch: 'full'},
-  { path: 'articles/:nav', component: ArticleDisplayComponent, pathMatch: 'full'}
+  { path: 'display/:nav', component: ArticleDisplayComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

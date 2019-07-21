@@ -1,3 +1,9 @@
-<div markdown ngPreserveWhitespaces>
- {{ article.article_content }}
+<div class="wrapContent">
+    <nz-card style="widows: 800px;">
+        <div class="formatData">
+            <p>
+                <markdown [data]="article_content"></markdown>
+            </p>
+        </div>
+    </nz-card>
 </div>

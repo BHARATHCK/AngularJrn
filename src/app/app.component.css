@@ -9,6 +9,7 @@
 
 div {
     overflow: inherit;
+    overflow-y: hidden !important;
 }
 
 .mat-sidenav-container{

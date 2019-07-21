@@ -4,7 +4,7 @@ import { Article } from '../article';
 import { NzMessageService } from 'ng-zorro-antd';
 import {MatRippleModule} from '@angular/material/core';
 import { DatePipe } from '@angular/common';
-import {Router} from "@angular/router"
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -75,7 +75,7 @@ export class ArticleDetailsComponent implements OnInit {
   
   navtodisplay(){
     console.log('NAVTODISPLAY TRIGGERED : ',this.article.key);
-    this.routerLink.navigate(['articles/'], {queryParams: {'nav': this.article.key}, skipLocationChange: true});
+    this.routerLink.navigate(['display/'], {queryParams: {'nav': this.article.key}});
   }
 
 }

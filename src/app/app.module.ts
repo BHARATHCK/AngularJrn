@@ -28,7 +28,7 @@ import { NZ_ICONS } from 'ng-zorro-antd';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { MarkdownModule } from 'ngx-markdown';
+import { MarkdownModule , MarkedOptions} from 'ngx-markdown';
 import { DeleteAllArticlesComponent } from './articles/delete-all-articles/delete-all-articles.component';
 
 import {
@@ -76,7 +76,20 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     NzFormModule,
     FlexLayoutModule,
     MatSidenavModule,
-    MarkdownModule.forRoot(),
+    MarkdownModule.forRoot({
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          gfm: true,
+          tables: true,
+          breaks: false,
+          pedantic: false,
+          sanitize: false,
+          smartLists: true,
+          smartypants: false,
+        },
+      },
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

@@ -3,4 +3,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body{
     margin: 0%;
+    /* overflow-y: hidden !important; */
 }
