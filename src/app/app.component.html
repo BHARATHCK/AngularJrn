@@ -8,7 +8,8 @@
 
     <a mat-button class="companyName" routerLink="/">
       <span *ngIf="!(authenticationService.userData | async)">FEED YOU</span>
-      <span *ngIf="authenticationService.userData | async">{{ (authenticationService.userData | async)?.email.substring(0,5) }}</span>
+      <span
+        *ngIf="authenticationService.userData | async">{{ (authenticationService.userData | async)?.email.substring(0,5) }}</span>
     </a>
     <span class="example-spacer"></span>
     <div fxShow="true" fxHide.lt-md="true">
@@ -22,8 +23,8 @@
         <mat-icon>delete_sweep</mat-icon> DELETE ALL POSTS
       </a>
       <a mat-button (click)="signOut()" *ngIf="authenticationService.userData | async">
-          <mat-icon>exit_to_app</mat-icon> LOGOUT
-        </a>
+        <mat-icon>exit_to_app</mat-icon> LOGOUT
+      </a>
     </div>
 
   </mat-toolbar>
@@ -31,7 +32,8 @@
   <div style="height: calc(100vh - 64px);">
     <mat-sidenav-container fxFlexFill class="example-container">
 
-      <mat-sidenav color="primary" #sidenav (click)="sidenav.toggle()" (close)="menuButton._removeKeyboardFocus()" fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+      <mat-sidenav color="primary" #sidenav (click)="sidenav.toggle()" (close)="menuButton._removeKeyboardFocus()"
+        fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
         <div fxLayout="column">
           <a md-button style="height: 0; position: absolute;"></a>
           <a mat-button routerLink="articles">
@@ -44,7 +46,7 @@
             <mat-icon>delete_sweep</mat-icon> DELETE ALL POSTS
           </a>
           <a mat-button (click)="signOut()" *ngIf="authenticationService.userData | async">
-              <mat-icon>exit_to_app</mat-icon> LOGOUT
+            <mat-icon>exit_to_app</mat-icon> LOGOUT
           </a>
         </div>
       </mat-sidenav>
@@ -55,35 +57,44 @@
 
         <div class="wrapLoginForm" *ngIf="!(authenticationService.userData | async)">
 
-            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-                <nz-form-item>
-                  <nz-form-control nzErrorTip="Please input your email!">
-                    <nz-input-group nzPrefixIcon="user">
-                      <input type="text" [(ngModel)]="email" nz-input formControlName="email" placeholder="EMAIL" />
-                    </nz-input-group>
-                  </nz-form-control>
-                </nz-form-item>
-                <nz-form-item>
-                  <nz-form-control nzErrorTip="Please input your Password!">
-                    <nz-input-group nzPrefixIcon="lock">
-                      <input type="password" [(ngModel)]="password" nz-input formControlName="password" placeholder="Password" />
-                    </nz-input-group>
-                  </nz-form-control>
-                </nz-form-item>
-                <nz-form-item>
-                  <nz-form-control>
-                    <label nz-checkbox formControlName="remember">
-                      <span>Remember me</span>
-                    </label>
-                    <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
-                    <button nz-button class="login-form-button" (click)="signIn()" [nzType]="'primary'">Log in</button>
-                    Or
-                    <button nz-button class="login-form-button" (click)="signUp()" [nzType]="'primary'">Sign Up</button>
-                    Or
-                    <button nz-button class="login-form-button" (click)="doGoogleLogin()" [nzType]="'primary'">Sign Up/Sign In via Google</button>
-                  </nz-form-control>
-                </nz-form-item>
-              </form>
+          <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please input your email!">
+                <nz-input-group nzPrefixIcon="user">
+                  <input type="text" [(ngModel)]="email" nz-input formControlName="email" placeholder="EMAIL" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please input your Password!">
+                <nz-input-group nzPrefixIcon="lock">
+                  <input type="password" [(ngModel)]="password" nz-input formControlName="password"
+                    placeholder="Password" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control>
+                <label nz-checkbox formControlName="remember">
+                  <span>Remember me</span>
+                </label>
+                <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+                <button nz-button class="login-form-button" (click)="signIn()" [nzType]="'primary'">Log in</button>
+                Or
+                <button nz-button class="login-form-button" (click)="signUp()" [nzType]="'primary'">Sign Up</button>
+                Or
+                  <button class="loginBtn loginBtn--facebook" (click)="doFacebookLogin()">
+                    Login with Facebook
+                  </button>
+
+                  <button class="loginBtn loginBtn--google" (click)="doGoogleLogin()">
+                    Login with Google
+                  </button>
+                
+
+              </nz-form-control>
+            </nz-form-item>
+          </form>
         </div>
       </mat-sidenav-content>
     </mat-sidenav-container>

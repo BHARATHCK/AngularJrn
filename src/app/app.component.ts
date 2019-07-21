@@ -2,6 +2,7 @@ import { Component , ViewChild, AfterViewInit,ElementRef} from '@angular/core';
 import { AuthenticationService } from '../app/articles/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButton} from '@angular/material/button';
+import { NzMessageService } from 'ng-zorro-antd';
 
 
 
@@ -26,7 +27,7 @@ export class AppComponent{
   }
 
 
-  constructor(public authenticationService: AuthenticationService, private fb: FormBuilder) { }
+  constructor(public authenticationService: AuthenticationService, private fb: FormBuilder , private message: NzMessageService) { }
 
   
 
@@ -48,6 +49,10 @@ export class AppComponent{
 
   doGoogleLogin(){
     this.authenticationService.doGoogleLogin();
+  }
+
+  doFacebookLogin(){
+    this.message.info('SORRY! SERVICE UNDER DEVELOPMENT');
   }
 
   ngOnInit(): void {

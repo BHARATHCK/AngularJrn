@@ -38,6 +38,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { ArticleDisplayComponent } from './articles/article-display/article-display.component';
 import { AuthenticationService } from '../app/articles/authentication.service';
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 
 registerLocaleData(en);
 
@@ -79,6 +80,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     FlexLayoutModule,
     MatSidenavModule,
     AngularFireAuthModule,
+    NzEmptyModule,
     MarkdownModule.forRoot({
       markedOptions: {
         provide: MarkedOptions,
