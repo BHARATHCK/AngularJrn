@@ -1,34 +1,3 @@
-<!--
-<div class="container-fluid">
-<h3>Create Post</h3>
-<div [hidden]="submitted" style="width: 300px;">
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" class="form-control" id="title" required [(ngModel)]="article.title" name="title">
-    </div>
-
-    <div class="form-group">
-      <label for="link">URL</label>
-      <input type="text" class="form-control" id="link" required [(ngModel)]="article.link" name="link">
-    </div>
-
-    <div class="form-group">
-        <label for="desc">DESCRIPTION</label>
-        <input type="text" class="form-control" id="desc" required [(ngModel)]="article.desc" name="desc">
-      </div>
-
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
-</div>
-
-<div [hidden]="!submitted">
-  <h4>You submitted successfully!</h4>
-  <button class="btn btn-success" (click)="newArticle()">Create Post</button>
-</div>
-</div>
--->
-<!--#####################################-->
 <html>
   <body>
 <br><br><br>
@@ -52,22 +21,14 @@
     </nz-form-control>
   </nz-form-item>
 
-  <nz-form-item>
+  <!-- <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="date_store" nzRequired>URL</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input URL!">
       <input nz-input id="date_store" [(ngModel)]="article.date_store" formControlName="date_store" value="{{myDate | date:'dd-MM-yyyy'}}"/>
     </nz-form-control>
-  </nz-form-item>
+  </nz-form-item> -->
 
 <!--style="display: none;"-->
-
-  
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="link" nzRequired>URL</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input URL!">
-      <input nz-input id="link" [(ngModel)]="article.link" formControlName="link" placeholder="link" />
-    </nz-form-control>
-  </nz-form-item>
 
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="desc" nzRequired>DESCRIPTION</nz-form-label>

@@ -53,11 +53,10 @@ export class CreateArticleComponent implements OnInit {
   ngOnInit() {
     this.validateForm = this.fb.group({
       title: [null, [Validators.required]],
-      link: [null, [Validators.required]],
       desc: [null, [Validators.required]],
       captcha: [null, [Validators.required]],
       agree: [false,[Validators.required]],
-      date_store: [this.myDate],
+      //date_store: [this.myDate],
       article_content: [null, [Validators.required]]
     });
   }

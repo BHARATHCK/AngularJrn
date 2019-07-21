@@ -9,14 +9,14 @@ import { AppComponent } from './app.component';
 import { CreateArticleComponent } from './articles/create-article/create-article.component';
 import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
 import { ArticleListComponent } from './articles/article-list/article-list.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,7 +28,7 @@ import { NZ_ICONS } from 'ng-zorro-antd';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { MarkdownModule , MarkedOptions} from 'ngx-markdown';
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { DeleteAllArticlesComponent } from './articles/delete-all-articles/delete-all-articles.component';
 
 import {
@@ -36,6 +36,8 @@ import {
 } from '@angular/material';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ArticleDisplayComponent } from './articles/article-display/article-display.component';
+import { AuthenticationService } from '../app/articles/authentication.service';
+import { AngularFireAuthModule } from "@angular/fire/auth";
 
 registerLocaleData(en);
 
@@ -76,6 +78,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     NzFormModule,
     FlexLayoutModule,
     MatSidenavModule,
+    AngularFireAuthModule,
     MarkdownModule.forRoot({
       markedOptions: {
         provide: MarkedOptions,
@@ -92,7 +95,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -24,8 +24,8 @@ export class ArticleListComponent implements OnInit {
   notifyValue: any;
   public notifyValueBoolean: boolean;
 
-  constructor(private articleService: ArticleService , private _Activatedroute:ActivatedRoute , private notification: NzNotificationService) { 
-     
+  constructor(private articleService: ArticleService, private _Activatedroute: ActivatedRoute, private notification: NzNotificationService) {
+
   }
 
   ngOnInit() {
@@ -33,16 +33,16 @@ export class ArticleListComponent implements OnInit {
     this.getArticleList();
 
 
-    this._Activatedroute.queryParams.subscribe(params =>{ this.notifyValue = params['foo'];});
+    this._Activatedroute.queryParams.subscribe(params => { this.notifyValue = params['foo']; });
 
-   // this.notifyValue = this._Activatedroute.snapshot.paramMap.get("foo");
+    // this.notifyValue = this._Activatedroute.snapshot.paramMap.get("foo");
 
-    if(this.notifyValue == 1){
+    if (this.notifyValue == 1) {
       this.notifyValueBoolean = true;
     }
-    if(this.notifyValue && this.notifyValueBoolean){
+    if (this.notifyValue && this.notifyValueBoolean) {
 
-      this.notification.blank('INFO ABOUT YOUR POST !','YOUR ARTICLE HAS BEEN SUCCESSFULLY POSTED AND CAN BE SEEN BY OTHERS');
+      this.notification.blank('INFO ABOUT YOUR POST !', 'YOUR ARTICLE HAS BEEN SUCCESSFULLY POSTED AND CAN BE SEEN BY OTHERS');
 
       this.notifyValueBoolean = false;
     }
@@ -61,7 +61,7 @@ this.sub=this._Activatedroute.paramMap.subscribe(params => {
 
   */
 
-   getArticleList() {
+  getArticleList() {
     this.articleService.getArticlesList().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
@@ -74,7 +74,8 @@ this.sub=this._Activatedroute.paramMap.subscribe(params => {
   }
 
   deleteArticles() {
-    this.articleService.deleteAll().catch(err => console.log(err));
+    this.notification.blank('System Message', 'This feature has been disabled for the time being, Check git repo for the timeline overview thank you!');
+    //this.articleService.deleteAll().catch(err => console.log(err));
   }
 
 }

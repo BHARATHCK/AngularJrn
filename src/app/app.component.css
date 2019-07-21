@@ -9,7 +9,6 @@
 
 div {
     overflow: inherit;
-    overflow-y: hidden !important;
 }
 
 .mat-sidenav-container{
@@ -18,12 +17,12 @@ div {
 
 a{
     text-decoration: none;
-    font-size: 110%;
+    font-size: 100%;
     white-space: normal;
 }
 
 button{
-    font-size: 110%;
+    font-size: 100%;
     min-width: min-content;
 }
 
@@ -43,4 +42,21 @@ button{
   .mat-elevation-z5 {
    position: relative;
    z-index: 2;
+}
+
+.login-form {
+  max-width: 300px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.wrapLoginForm{
+  display: flex;
+  justify-content: center;
 }

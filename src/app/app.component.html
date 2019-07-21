@@ -34,7 +34,7 @@
 </mat-toolbar>
 -->
 
-<div> 
+<div>
   <mat-toolbar color="primary" class="mat-elevation-z5">
     <div fxShow="true" fxHide.gt-sm="true">
       <button mat-icon-button (click)="sidenav.toggle()">
@@ -47,26 +47,89 @@
     </a>
     <span class="example-spacer"></span>
     <div fxShow="true" fxHide.lt-md="true">
-      <a mat-button routerLink="articles"><mat-icon>chrome_reader_mode</mat-icon> FEED</a>
-      <a mat-button routerLink="post"><mat-icon>note_add</mat-icon> CREATE POST</a>
-      <a mat-button routerLink="delete"><mat-icon>delete_sweep</mat-icon> DELETE ALL POSTS</a>
+      <a mat-button routerLink="articles">
+        <mat-icon>chrome_reader_mode</mat-icon> FEED
+      </a>
+      <a mat-button routerLink="post">
+        <mat-icon>note_add</mat-icon> CREATE POST
+      </a>
+      <a mat-button routerLink="delete">
+        <mat-icon>delete_sweep</mat-icon> DELETE ALL POSTS
+      </a>
+      <a mat-button (click)="signOut()" *ngIf="authenticationService.userData | async">
+          <mat-icon>exit_to_app</mat-icon> LOGOUT
+        </a>
     </div>
 
   </mat-toolbar>
 
-<div style="height: calc(100vh - 64px);">
-  <mat-sidenav-container fxFlexFill class="example-container">
+  <div style="height: calc(100vh - 64px);">
+    <mat-sidenav-container fxFlexFill class="example-container">
 
-    <mat-sidenav color="primary" #sidenav (click)="sidenav.toggle()" fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
-      <div fxLayout="column">
-        <a mat-button routerLink="articles"><mat-icon>chrome_reader_mode</mat-icon> FEED</a>
-        <a mat-button routerLink="post"><mat-icon>note_add</mat-icon> CREATE POSTS</a>
-        <a mat-button routerLink="delete"><mat-icon>delete_sweep</mat-icon> DELETE ALL POSTS</a>
-      </div>
-    </mat-sidenav>
-    <mat-sidenav-content fxFlexFill>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
+      <mat-sidenav color="primary" #sidenav (click)="sidenav.toggle()" fxLayout="column" mode="over" opened="false"
+        fxHide.gt-sm="true">
+        <div fxLayout="column">
+          <a mat-button routerLink="articles">
+            <mat-icon>chrome_reader_mode</mat-icon> FEED
+          </a>
+          <a mat-button routerLink="post">
+            <mat-icon>note_add</mat-icon> CREATE POSTS
+          </a>
+          <a mat-button routerLink="delete">
+            <mat-icon>delete_sweep</mat-icon> DELETE ALL POSTS
+          </a>
+          <a mat-button (click)="signOut()" *ngIf="authenticationService.userData | async">
+              <mat-icon>exit_to_app</mat-icon> LOGOUT
+          </a>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content fxFlexFill>
+        <p *ngIf="authenticationService.userData | async">Hello {{ (authenticationService.userData | async)?.email }}
+          <router-outlet></router-outlet>
+        </p>
+
+        <div class="wrapLoginForm" *ngIf="!(authenticationService.userData | async)">
+
+            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your email!">
+                    <nz-input-group nzPrefixIcon="user">
+                      <input type="text" [(ngModel)]="email" nz-input formControlName="email" placeholder="EMAIL" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your Password!">
+                    <nz-input-group nzPrefixIcon="lock">
+                      <input type="password" [(ngModel)]="password" nz-input formControlName="password" placeholder="Password" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control>
+                    <label nz-checkbox formControlName="remember">
+                      <span>Remember me</span>
+                    </label>
+                    <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+                    <button nz-button class="login-form-button" (click)="signIn()" [nzType]="'primary'">Log in</button>
+                    Or
+                    <button nz-button class="login-form-button" (click)="signUp()" [nzType]="'primary'">Sign Up</button>
+                  </nz-form-control>
+                </nz-form-item>
+              </form>
+        </div>
+
+<!-- 
+          <input type="text" [(ngModel)]="email" placeholder="email">
+          <input type="password" [(ngModel)]="password" placeholder="password">
+
+          <button (click)="signUp()">Sign Up</button>
+
+          <button (click)="signIn()">Login</button>
+        </div>
+
+        <button (click)="signOut()" *ngIf="authenticationService.userData | async">Logout</button> -->
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
 </div>
