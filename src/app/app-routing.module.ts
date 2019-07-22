@@ -4,6 +4,7 @@ import { CreateArticleComponent } from './articles/create-article/create-article
 import { ArticleListComponent } from './articles/article-list/article-list.component';
 import { DeleteAllArticlesComponent } from './articles/delete-all-articles/delete-all-articles.component';
 import { ArticleDisplayComponent } from './articles/article-display/article-display.component';
+import { UserProfileComponent } from './articles/user-profile/user-profile.component';
 
 
 
@@ -14,7 +15,9 @@ const routes: Routes = [
   { path: 'delete', component: DeleteAllArticlesComponent},
   { path: 'display', component: ArticleDisplayComponent },
   { path: 'articles/:foo', component: ArticleListComponent, pathMatch: 'full'},
-  { path: 'display/:nav', component: ArticleDisplayComponent, pathMatch: 'full'}
+  { path: 'display/:nav', component: ArticleDisplayComponent, pathMatch: 'full'},
+  { path: 'profile', component: UserProfileComponent},
+  { path: 'profile/delete', component: UserProfileComponent}
 ];
 
 @NgModule({

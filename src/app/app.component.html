@@ -6,7 +6,7 @@
       </button>
     </div>
 
-    <a mat-button class="companyName" routerLink="/">
+    <a mat-button class="companyName" routerLink="profile">
       <span *ngIf="!(authenticationService.userData | async)">FEED YOU</span>
       <span
         *ngIf="authenticationService.userData | async">{{ (authenticationService.userData | async)?.email.substring(0,5) }}</span>

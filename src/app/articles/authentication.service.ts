@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import * as firebase from 'firebase/app';
 export class AuthenticationService {
   userData: Observable<firebase.User>;
 
-  constructor(private angularFireAuth: AngularFireAuth) {
+  constructor(private angularFireAuth: AngularFireAuth , private message: NzMessageService) {
     this.userData = angularFireAuth.authState;
   }
 
@@ -59,6 +60,11 @@ export class AuthenticationService {
         resolve(res);
       })
     })
+  }
+
+  deleteUser(){
+    var User = firebase.auth().currentUser;
+    User.delete();
   }
 
 }

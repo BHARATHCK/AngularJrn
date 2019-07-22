@@ -39,6 +39,7 @@ import { ArticleDisplayComponent } from './articles/article-display/article-disp
 import { AuthenticationService } from '../app/articles/authentication.service';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { UserProfileComponent } from './articles/user-profile/user-profile.component';
 
 registerLocaleData(en);
 
@@ -55,7 +56,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     ArticleDetailsComponent,
     ArticleListComponent,
     DeleteAllArticlesComponent,
-    ArticleDisplayComponent
+    ArticleDisplayComponent,
+    UserProfileComponent
   ],
   imports: [
     HttpClientModule,
