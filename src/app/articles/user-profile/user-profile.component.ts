@@ -13,11 +13,19 @@ import * as firebase from 'firebase/app';
 })
 export class UserProfileComponent implements OnInit {
 
+  loading = true;
+
   userData: Observable<firebase.User>;
+  name: string;
+  email: string;
+  photoUrl: any
+  uid: any; 
+  emailVerified: any;
 
   constructor(private authenticationService: AuthenticationService ,private message: NzMessageService , private angularFireAuth: AngularFireAuth) { }
 
   ngOnInit() {
+    this.getProfile();
     this.userData = this.angularFireAuth.user;
     console.log('THE USER DATA IS AS FOLLOWS :: ', this.userData);
   }
@@ -27,4 +35,16 @@ export class UserProfileComponent implements OnInit {
     this.authenticationService.deleteUser();
     this.message.info('Your Information has been purged and no longer exists with us. Thank You & Farewell');
   }
+
+  getProfile(){
+    var user = firebase.auth().currentUser;
+
+    if (user != null) {
+      this.name = user.displayName;
+      this.email = user.email;
+      this.photoUrl = user.photoURL;
+      this.emailVerified = user.emailVerified;
+      this.uid = user.uid;
+  }
+}
 }

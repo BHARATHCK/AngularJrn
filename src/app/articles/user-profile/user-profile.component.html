@@ -1,9 +1,35 @@
-<p>user-profile works!</p>
+<nz-switch *ngIf="!(getProfile())" [(ngModel)]="loading"></nz-switch>
 
-<p>{{ User }}</p>
-
-<a mat-button (click)="deleteUser()">
-        <mat-icon>delete_sweep</mat-icon> DELETE PROFILE
-      </a>
-
-<button nz-button class="login-form-button" (click)="deleteUser()" [nzType]="'primary'">DELETE PROFILE</button>
+    <nz-card style="width: 300px;margin-top: 16px" [nzActions]="[actionDelete, actionEdit, actionEllipsis]">
+      <nz-skeleton [nzActive]="true" [nzLoading]="loading" [nzAvatar]="{ size: 'large' }">
+        <nz-card-meta
+          [nzAvatar]="avatarTemplate"
+          nzTitle="Profile Info"
+          nzDescription="UserName: {{ name }}">
+          </nz-card-meta>
+          <nz-card-meta
+          nzDescription="EmailId: {{ email }}">
+          </nz-card-meta>
+          <nz-card-meta
+          nzDescription="Unique_User_Id: {{ uid }}">
+          </nz-card-meta>
+          <nz-card-meta
+          nzDescription="Email Verification status: {{emailVerified}}">
+          </nz-card-meta>
+          <nz-card-meta
+          nzDescription="Address: {{address}}">
+          </nz-card-meta>
+      </nz-skeleton>
+    </nz-card>
+    <ng-template #avatarTemplate>
+      <nz-avatar nzSrc="url"></nz-avatar>
+    </ng-template>
+    <ng-template #actionDelete>
+      <i nz-icon [nzType]="'delete'" (click)="deleteUser()"></i>
+    </ng-template>
+    <ng-template #actionEdit>
+      <i nz-icon nzType="edit"></i>
+    </ng-template>
+    <ng-template #actionEllipsis>
+      <i nz-icon nzType="ellipsis"></i>
+    </ng-template>
