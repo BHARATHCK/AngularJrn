@@ -1,4 +1,6 @@
 .zorroWrap{
   display: flex;
-  padding-left: 400px;
+  justify-content: center;
+  padding: 5px;
+  overflow-y: hidden !important;
 }

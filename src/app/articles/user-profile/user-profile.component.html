@@ -1,10 +1,15 @@
-<nz-switch *ngIf="!(getProfile())" [(ngModel)]="loading"></nz-switch>
+<!--<nz-switch *ngIf="!(getProfile())" [(ngModel)]="loading"></nz-switch>-->
 
+<div class="zorroWrap">
     <nz-card style="width: 300px;margin-top: 16px" [nzActions]="[actionDelete, actionEdit, actionEllipsis]">
-      <nz-skeleton [nzActive]="true" [nzLoading]="loading" [nzAvatar]="{ size: 'large' }">
+      <nz-skeleton [nzActive]="true" [nzAvatar]="{ size: 'large' }">
         <nz-card-meta
           [nzAvatar]="avatarTemplate"
           nzTitle="Profile Info"
+          nzDescription="">
+          </nz-card-meta>
+          <br>
+          <nz-card-meta
           nzDescription="UserName: {{ name }}">
           </nz-card-meta>
           <nz-card-meta
@@ -17,7 +22,7 @@
           nzDescription="Email Verification status: {{emailVerified}}">
           </nz-card-meta>
           <nz-card-meta
-          nzDescription="Address: {{address}}">
+          nzDescription="Address: ">
           </nz-card-meta>
       </nz-skeleton>
     </nz-card>
@@ -33,3 +38,4 @@
     <ng-template #actionEllipsis>
       <i nz-icon nzType="ellipsis"></i>
     </ng-template>
+</div>
