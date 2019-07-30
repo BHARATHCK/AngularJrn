@@ -33,14 +33,10 @@ export class AppComponent{
 
   signUp() {
     this.authenticationService.SignUp(this.email, this.password);
-    this.email = '';
-    this.password = '';
   }
 
   signIn() {
     this.authenticationService.SignIn(this.email, this.password);
-    this.email = '';
-    this.password = '';
   }
 
   signOut() {
@@ -59,7 +55,7 @@ export class AppComponent{
     this.validateForm = this.fb.group({
       email: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      remember: [true]
+      remember: [false]
     });
   }
 }

@@ -25,6 +25,7 @@ export class AuthenticationService {
       })
       .catch(error => {
         console.log('Something is wrong:', error.message);
+        this.message.info(error.message);
       });
   }
 
@@ -39,6 +40,7 @@ export class AuthenticationService {
       })
       .catch(err => {
         console.log('Something is wrong:', err.message);
+        this.message.info(err.message);
       });
   }
 
