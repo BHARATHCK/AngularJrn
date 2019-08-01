@@ -1,12 +1,61 @@
 .formatData{
     text-align: left;
     padding: 50px;
-    overflow-y: hidden !important;
 }
 
 .wrapContent{
-    display: flex;
+    
     justify-content: center;
+    padding: 10px;
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+.formatData{
+    text-align: left;
     padding: 5px;
-    overflow-y: hidden !important;
+}
+
+.wrapContent{
+    justify-content: left;
+    padding-left: 5px;
+}
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 400px) and (max-width: 480px) {
+  
+
+.formatData{
+    text-align: left;
+    padding: 5px;
+}
+
+.wrapContent{
+    justify-content: left;
+    padding-left: 5px;
+}
+  
+}
+
+@media (min-width: 320px) and (max-width: 340px) {
+  
+.formatData{
+    text-align: left;
+    padding: 5px;
+}
+
+.wrapContent{
+    justify-content: left;
+    padding-left: 5px;
+}
 }

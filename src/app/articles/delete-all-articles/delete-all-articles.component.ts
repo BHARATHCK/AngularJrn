@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router"
 import { ArticleService } from '../article.service';
 import { NzNotificationService } from 'ng-zorro-antd';
+import { AppComponent } from './../../app.component';
 
 @Component({
   selector: 'app-delete-all-articles',
@@ -10,9 +11,10 @@ import { NzNotificationService } from 'ng-zorro-antd';
 })
 export class DeleteAllArticlesComponent implements OnInit {
 
-  constructor(private routerLink: Router, private articleService: ArticleService, private notification: NzNotificationService) { }
+  constructor(private routerLink: Router, private articleService: ArticleService, private notification: NzNotificationService , private appComponent: AppComponent) { }
 
   ngOnInit() {
+    this.appComponent.setShowAsFalse();
     this.notification.blank('System Message', 'This feature has been disabled by developer, please check git timeline for furthur info');
     //this.articleService.deleteAll();
     this.routerLink.navigate(['articles/']);

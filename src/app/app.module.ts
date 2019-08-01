@@ -40,6 +40,7 @@ import { AuthenticationService } from '../app/articles/authentication.service';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { UserProfileComponent } from './articles/user-profile/user-profile.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 registerLocaleData(en);
 
@@ -68,6 +69,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     MatCardModule,
     MatNativeDateModule,
     MatButtonModule,
+    MatProgressBarModule,
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,

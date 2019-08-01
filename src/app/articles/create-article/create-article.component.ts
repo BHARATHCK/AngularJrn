@@ -6,10 +6,10 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { Article } from '../article';
 import { ArticleService } from '../article.service';
 import { ArticleListComponent } from '../article-list/article-list.component'
-
 import { DatePipe } from '@angular/common';
 
 import {Router} from "@angular/router"
+import { AppComponent } from './../../app.component';
 
 @Component({
   selector: 'app-create-article',
@@ -24,7 +24,7 @@ export class CreateArticleComponent implements OnInit {
   submitted = false;
   myDate = new Date();
 
-  constructor(private articleService: ArticleService, private fb: FormBuilder , private routerLink: Router , private modalService: NzModalService , public articleListComponent: ArticleListComponent) {
+  constructor(private articleService: ArticleService, private fb: FormBuilder , private routerLink: Router , private modalService: NzModalService , public articleListComponent: ArticleListComponent , private appComponent: AppComponent) {
    }
 
 
@@ -51,6 +51,7 @@ export class CreateArticleComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.appComponent.setShowAsFalse();
     this.validateForm = this.fb.group({
       title: [null, [Validators.required]],
       desc: [null, [Validators.required]],

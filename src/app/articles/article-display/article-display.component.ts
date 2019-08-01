@@ -9,6 +9,7 @@ import { Router } from "@angular/router"
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MarkdownModule } from 'ngx-markdown';
+import { AppComponent } from './../../app.component';
 
 @Component({
   selector: 'app-article-display',
@@ -23,9 +24,10 @@ export class ArticleDisplayComponent implements OnInit {
   article_content: any;
   i: number;
 
-  constructor(private _Activatedroute: ActivatedRoute, private articleService: ArticleService) { }
+  constructor(private _Activatedroute: ActivatedRoute, private articleService: ArticleService , private appComponent: AppComponent) { }
 
   ngOnInit() {
+    this.appComponent.setShowAsFalse();
     this._Activatedroute.queryParams.subscribe(params => { this.handle_get_article = params['nav']; });
     console.log('THE DISPLAY COMPONENT GOT TRIGGERED, THE ARTICLE KEY IS : ', this.handle_get_article);
     this.getArticleList();

@@ -18,6 +18,8 @@ export class AppComponent{
   email: string;
   password: string;
   validateForm: FormGroup;
+  show: boolean;
+
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -27,24 +29,35 @@ export class AppComponent{
   }
 
 
+
   constructor(public authenticationService: AuthenticationService, private fb: FormBuilder , private message: NzMessageService) { }
 
-  
+  setShowAsTrue(){
+    this.show = true;
+  }  
+
+  setShowAsFalse(){
+    this.show = false;
+  }
 
   signUp() {
     this.authenticationService.SignUp(this.email, this.password);
+    this.setShowAsTrue();
   }
 
   signIn() {
     this.authenticationService.SignIn(this.email, this.password);
+    this.setShowAsTrue();
   }
 
   signOut() {
     this.authenticationService.SignOut();
+    this.setShowAsFalse();
   }
 
   doGoogleLogin(){
     this.authenticationService.doGoogleLogin();
+    this.setShowAsTrue();
   }
 
   doFacebookLogin(){

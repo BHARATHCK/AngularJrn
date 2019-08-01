@@ -8,6 +8,7 @@ import { Observable, of } from 'rxjs';
 import { delay, share } from 'rxjs/operators';
 import { Article } from './../article';
 import * as firebase from 'firebase';
+import { AppComponent } from './../../app.component';
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +25,13 @@ export class ArticleListComponent implements OnInit {
   notifyValue: any;
   public notifyValueBoolean: boolean;
 
-  constructor(private articleService: ArticleService, private _Activatedroute: ActivatedRoute, private notification: NzNotificationService) {
+  constructor(private articleService: ArticleService, private _Activatedroute: ActivatedRoute, private notification: NzNotificationService , private appComponent:AppComponent) {
 
   }
 
   ngOnInit() {
+
+   // this.appComponent.setShowAsFalse();
 
     this.getArticleList();
 

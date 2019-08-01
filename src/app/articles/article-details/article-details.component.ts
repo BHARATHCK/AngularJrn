@@ -5,6 +5,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 import {MatRippleModule} from '@angular/material/core';
 import { DatePipe } from '@angular/common';
 import {Router} from '@angular/router';
+import { AppComponent } from './../../app.component';
 
 
 @Component({
@@ -21,9 +22,10 @@ export class ArticleDetailsComponent implements OnInit {
   placement = 'bottom';
   myDate = new Date();
 
-  constructor(private articleService: ArticleService , private nzMessageService: NzMessageService , private datePipe: DatePipe , private routerLink: Router) { }
+  constructor(private articleService: ArticleService , private nzMessageService: NzMessageService , private datePipe: DatePipe , private routerLink: Router , private appComponent: AppComponent) { }
 
   ngOnInit() {
+    this.appComponent.setShowAsFalse();
   }
 
   updateActive(isActive: boolean) {

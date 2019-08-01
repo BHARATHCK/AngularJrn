@@ -51,6 +51,9 @@
         </div>
       </mat-sidenav>
       <mat-sidenav-content fxFlexFill>
+        <div *ngIf="show">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
         <p *ngIf="authenticationService.userData | async">
           <router-outlet></router-outlet>
         </p>

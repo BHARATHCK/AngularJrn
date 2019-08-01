@@ -5,6 +5,8 @@ import { ArticleService } from '../article.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import { Observable, BehaviorSubject} from 'rxjs';
 import * as firebase from 'firebase/app';
+import { AppComponent } from './../../app.component';
+
 
 @Component({
   selector: 'app-user-profile',
@@ -22,9 +24,10 @@ export class UserProfileComponent implements OnInit {
   uid: any; 
   emailVerified: any;
 
-  constructor(private authenticationService: AuthenticationService ,private message: NzMessageService , private angularFireAuth: AngularFireAuth) { }
+  constructor(private authenticationService: AuthenticationService ,private message: NzMessageService , private angularFireAuth: AngularFireAuth , private appComponent: AppComponent) { }
 
   ngOnInit() {
+    this.appComponent.setShowAsFalse();
     this.getProfile();
     this.userData = this.angularFireAuth.user;
     console.log('THE USER DATA IS AS FOLLOWS :: ', this.userData);
