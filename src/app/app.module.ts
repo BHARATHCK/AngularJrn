@@ -101,7 +101,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }, AuthenticationService],
+    providers: [{ provide: NZ_I18N, useValue: en_US }, AuthenticationService , AppComponent , HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
