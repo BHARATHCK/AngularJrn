@@ -3,7 +3,7 @@ import { AuthenticationService } from '../authentication.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ArticleService } from '../article.service';
 import { NzMessageService } from 'ng-zorro-antd';
-import { Observable, BehaviorSubject} from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { AppComponent } from './../../app.component';
 
@@ -15,39 +15,62 @@ import { AppComponent } from './../../app.component';
 })
 export class UserProfileComponent implements OnInit {
 
-  loading = true;
+  showLoader: boolean = true;
 
   userData: Observable<firebase.User>;
-  name: string;
-  email: string;
-  photoUrl: any
-  uid: any; 
+  user: Observable<firebase.User>;
+  name: any;
+  email: any;
+  photoUrl: any;
+  uid: any;
   emailVerified: any;
 
-  constructor(private authenticationService: AuthenticationService ,private message: NzMessageService , private angularFireAuth: AngularFireAuth , private appComponent: AppComponent) { }
+  constructor(private authenticationService: AuthenticationService, private message: NzMessageService, private angularFireAuth: AngularFireAuth, private appComponent: AppComponent) { }
 
   ngOnInit() {
-    this.appComponent.setShowAsFalse();
     this.getProfile();
-    this.userData = this.angularFireAuth.user;
+    setTimeout(() => {
+      this.angularFireAuth.user.subscribe(() => this.setShowLoaderAsFalse());
+    }, 1000);
     console.log('THE USER DATA IS AS FOLLOWS :: ', this.userData);
   }
 
-  deleteUser(){
+  setShowLoaderAsFalse() {
+    console.log('SHOWLOADER IS NOW ', this.showLoader);
+    this.showLoader = false;
+    console.log('SHOWLOADER IS NOW ', this.showLoader);
+  }
+
+  deleteUser() {
     console.log('delete user in profile component triggered');
     this.authenticationService.deleteUser();
     this.message.info('Your Information has been purged and no longer exists with us. Thank You & Farewell');
   }
 
-  getProfile(){
-    var user = firebase.auth().currentUser;
+  getProfileWithObservable() {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        console.log('USER WITH OBSERVABLE : ', user);
+        this.name = user.displayName;
+        this.email = user.email;
+        this.photoUrl = user.photoURL;
+        this.emailVerified = user.emailVerified;
+        this.uid = user.uid;
+      }
+      else {
+        // RE-AUTHENTICATE
+      }
+    });
+  }
 
+  getProfile() {
+    var user = firebase.auth().currentUser;
     if (user != null) {
       this.name = user.displayName;
       this.email = user.email;
       this.photoUrl = user.photoURL;
       this.emailVerified = user.emailVerified;
       this.uid = user.uid;
+    }
   }
-}
 }

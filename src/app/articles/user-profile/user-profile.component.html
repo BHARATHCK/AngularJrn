@@ -1,8 +1,11 @@
 <!--<nz-switch *ngIf="!(getProfile())" [(ngModel)]="loading"></nz-switch>-->
 
-<div class="zorroWrap">
+<div class="zorroWrap" *ngIf="showLoader">
+  <p>THIS SHIT IS LITTTTT!!!!!!!!!!</p>
+</div>
+<div *ngIf="!showLoader" class="zorroWrap">
     <nz-card style="width: 300px;margin-top: 16px" [nzActions]="[actionDelete, actionEdit, actionEllipsis]">
-      <nz-skeleton [nzActive]="true" [nzAvatar]="{ size: 'large' }">
+      
         <nz-card-meta
           [nzAvatar]="avatarTemplate"
           nzTitle="Profile Info"
@@ -24,10 +27,10 @@
           <nz-card-meta
           nzDescription="Address: ">
           </nz-card-meta>
-      </nz-skeleton>
+    
     </nz-card>
     <ng-template #avatarTemplate>
-      <nz-avatar nzSrc="url"></nz-avatar>
+      <nz-avatar nzSrc="https://imgur.com/a/wLKCbDN"></nz-avatar>
     </ng-template>
     <ng-template #actionDelete>
       <i nz-icon [nzType]="'delete'" (click)="deleteUser()"></i>

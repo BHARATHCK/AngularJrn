@@ -1,3 +1,10 @@
+<div *ngIf="showLoader">
+    <ng-template #indicatorTemplate><i nz-icon nzType="loading" style="font-size: 24px;"></i> </ng-template>
+    <nz-spin nzSimple [nzIndicator]="indicatorTemplate"> </nz-spin>
+</div>
+
+<div *ngIf="!showLoader">
 <div *ngFor="let article of articles.slice().reverse()">
     <app-article-details [article]='article'></app-article-details>
+</div>
 </div>

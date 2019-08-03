@@ -21,6 +21,7 @@ import { AppComponent } from './../../app.component';
 })
 export class ArticleListComponent implements OnInit {
 
+  showLoader: boolean = true;
   articles: any;
   notifyValue: any;
   public notifyValueBoolean: boolean;
@@ -34,6 +35,7 @@ export class ArticleListComponent implements OnInit {
    // this.appComponent.setShowAsFalse();
 
     this.getArticleList();
+    
 
 
     this._Activatedroute.queryParams.subscribe(params => { this.notifyValue = params['foo']; });
@@ -73,6 +75,7 @@ this.sub=this._Activatedroute.paramMap.subscribe(params => {
       )
     ).subscribe(articles => {
       this.articles = articles;
+      this.showLoader = false;
     });
   }
 
