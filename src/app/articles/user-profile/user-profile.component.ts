@@ -16,6 +16,8 @@ import { AppComponent } from './../../app.component';
 export class UserProfileComponent implements OnInit {
 
   showLoader: boolean = true;
+  visible: boolean = false;
+  placement = 'bottom';
 
   userData: Observable<firebase.User>;
   user: Observable<firebase.User>;
@@ -72,5 +74,13 @@ export class UserProfileComponent implements OnInit {
       this.emailVerified = user.emailVerified;
       this.uid = user.uid;
     }
+  }
+
+  open(){
+    this.visible = true;
+  }
+
+  close(){
+    this.visible = false;
   }
 }

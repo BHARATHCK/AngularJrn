@@ -1,7 +1,7 @@
 <!--<nz-switch *ngIf="!(getProfile())" [(ngModel)]="loading"></nz-switch>-->
 
 <div class="zorroWrap" *ngIf="showLoader">
-  <p>THIS SHIT IS LITTTTT!!!!!!!!!!</p>
+  <p></p>
 </div>
 <div *ngIf="!showLoader" class="zorroWrap">
     <nz-card style="width: 300px;margin-top: 16px" [nzActions]="[actionDelete, actionEdit, actionEllipsis]">
@@ -39,6 +39,19 @@
       <i nz-icon nzType="edit"></i>
     </ng-template>
     <ng-template #actionEllipsis>
-      <i nz-icon nzType="ellipsis"></i>
+      <i nz-icon nzType="ellipsis" (click)="open()"></i>
     </ng-template>
+
+    <nz-drawer
+      [nzClosable]="false"
+      [nzVisible]="visible"
+      [nzPlacement]="placement"
+      nzTitle="PLACEHOLDER"
+      (nzOnClose)="close()">
+      
+      <button mat-button><mat-icon>notes</mat-icon>ADD ADDITIONAL DETAILS</button><br>
+      <button mat-button><mat-icon>library_add</mat-icon>Your Posts</button><br>
+      <button mat-button><mat-icon>info</mat-icon>About</button><br>
+ 
+    </nz-drawer>
 </div>
