@@ -41,6 +41,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { UserProfileComponent } from './articles/user-profile/user-profile.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { EditUserProfileComponent } from './articles/edit-user-profile/edit-user-profile.component';
 
 registerLocaleData(en);
 
@@ -58,7 +59,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     ArticleListComponent,
     DeleteAllArticlesComponent,
     ArticleDisplayComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    EditUserProfileComponent
   ],
   imports: [
     HttpClientModule,

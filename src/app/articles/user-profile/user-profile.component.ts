@@ -6,6 +6,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 import { Observable, BehaviorSubject } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { AppComponent } from './../../app.component';
+import { NzModalService } from 'ng-zorro-antd';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class UserProfileComponent implements OnInit {
   uid: any;
   emailVerified: any;
 
-  constructor(private authenticationService: AuthenticationService, private message: NzMessageService, private angularFireAuth: AngularFireAuth, private appComponent: AppComponent) { }
+  constructor(private authenticationService: AuthenticationService, private message: NzMessageService, private angularFireAuth: AngularFireAuth, private appComponent: AppComponent , private nzModal: NzModalService) { }
 
   ngOnInit() {
     this.getProfile();
@@ -35,6 +36,10 @@ export class UserProfileComponent implements OnInit {
       this.angularFireAuth.user.subscribe(() => this.setShowLoaderAsFalse());
     }, 1000);
     console.log('THE USER DATA IS AS FOLLOWS :: ', this.userData);
+  }
+
+  editProfile(){
+    
   }
 
   setShowLoaderAsFalse() {

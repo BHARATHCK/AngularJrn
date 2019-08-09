@@ -5,6 +5,7 @@ import { ArticleListComponent } from './articles/article-list/article-list.compo
 import { DeleteAllArticlesComponent } from './articles/delete-all-articles/delete-all-articles.component';
 import { ArticleDisplayComponent } from './articles/article-display/article-display.component';
 import { UserProfileComponent } from './articles/user-profile/user-profile.component';
+import { EditUserProfileComponent } from './articles/edit-user-profile/edit-user-profile.component';
 
 
 
@@ -17,12 +18,13 @@ const routes: Routes = [
   { path: 'articles/:foo', component: ArticleListComponent, pathMatch: 'full'},
   { path: 'display/:nav', component: ArticleDisplayComponent, pathMatch: 'full'},
   { path: 'profile', component: UserProfileComponent},
-  { path: 'profile/delete', component: UserProfileComponent}
+  { path: 'profile/delete', component: UserProfileComponent},
+  { path: 'profile/userProfileEdit', component: EditUserProfileComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
 

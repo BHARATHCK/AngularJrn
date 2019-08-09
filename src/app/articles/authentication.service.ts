@@ -9,7 +9,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 })
 
 export class AuthenticationService {
-  userData: Observable<firebase.User>;
+  public userData: Observable<firebase.User>;
 
   constructor(private angularFireAuth: AngularFireAuth , private message: NzMessageService) {
     this.userData = angularFireAuth.authState;
